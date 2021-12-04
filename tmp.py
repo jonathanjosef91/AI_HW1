@@ -1,16 +1,9 @@
+import numpy as np
 
+from Heuristics import ShorterRobotHeuristic
+from MazeProblem import create_problem
 
-def giveNextEven():
-    yield 0
-    yield 2
-    yield 4
-    yield 6
-    yield 8
-    yield 10
-
-
-for i in giveNextEven():
-    print(i)
-
-for i in giveNextEven():
-    print(i)
+maze_problem = create_problem(f"maze_{0}")
+print("head", maze_problem.initial_state.head)
+print("tail", maze_problem.initial_state.tail)
+print(ShorterRobotHeuristic(maze_problem=maze_problem,k=2)._compute_shorter_head_and_tails(head=maze_problem.initial_state.head, tail=maze_problem.initial_state.tail))

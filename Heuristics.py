@@ -35,8 +35,10 @@ class ShorterRobotHeuristic:
         assert isinstance(self.node_dists, NodesCollection)
 
     def _compute_shorter_head_and_tails(self, head, tail):
-        # TODO (EX. 13.1): complete code here, delete exception
-        raise NotImplemented
+        direction = compute_robot_direction(head, tail)
+        step = direction*(self.k/2)
+
+        return head - step, tail + step
 
     def __call__(self, state: MazeState):
         # TODO (EX. 13.3): replace each three dots, delete exception
