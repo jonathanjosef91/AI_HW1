@@ -53,7 +53,7 @@ def generateNewProblem(n: int, k : int, iters: int, F = 10, R = 1):
     problem[head[0], head[1]] = 0
     problem[tail_goal[0], tail_goal[1]] = 0
     problem[head_goal[0], head_goal[1]] = 0
-    maze_problem = MazeProblem(map, head, tail, head_goal, tail_goal, F, R)
+    maze_problem = MazeProblem(map, head, tail, head_goal, tail_goal)
     return maze_problem, map
 
 def runContest(iters: int = 10):
@@ -61,7 +61,7 @@ def runContest(iters: int = 10):
 
     for i in range(iters):
         try:
-            problem, map = generateNewProblem(10, 5, 10)
+            problem, map = generateNewProblem(20, 15, 25)
             UCS_r = UniformCostSearchRobot()
             WAS_r = WAStartRobot(heuristic=tail_manhattan_heuristic)
 
@@ -83,5 +83,8 @@ def runContest(iters: int = 10):
     return problems
 
 maps = runContest(25)
-# if len(maps) != 0:
-    # pd.DataFrame(maps[0]).to_csv("Mazes/maze_99.csv")
+if len(maps) != 0:
+    print("Found")
+    pd.DataFrame(maps[0]).to_csv("Mazes/maze_99.csv")
+else:
+    print("Not found")
