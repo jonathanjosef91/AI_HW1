@@ -23,10 +23,10 @@ class ShorterRobotHeuristic:
         ################################################################################################################
         # TODO (EX. 13.2): replace all three dots, delete exception
         raise NotImplemented
-        shorter_robot_head_goal, shorter_robot_tail_goal = ...
+        shorter_robot_head_goal, shorter_robot_tail_goal = ... #it doesnt matter?
         self.new_maze_problem = MazeProblem(maze_map=...,
-                                            initial_head=...,
-                                            initial_tail=...,
+                                            initial_head= compute_robot_direction(MazeState.head , MazeState.tail), #return the first
+                                            initial_tail=compute_robot_direction(MazeState.head , MazeState.tail),#return the seconed
                                             head_goal=shorter_robot_head_goal,  # doesn't matter, don't change
                                             tail_goal=shorter_robot_tail_goal)  # doesn't matter, don't change
         self.node_dists = ...().solve(..., compute_all_dists=True)
