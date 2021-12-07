@@ -82,9 +82,26 @@ def runContest(iters: int = 10):
 
     return problems
 
-maps = runContest(25)
-if len(maps) != 0:
-    print("Found")
-    pd.DataFrame(maps[0]).to_csv("Mazes/maze_99.csv")
-else:
-    print("Not found")
+# maps = runContest(25)
+# if len(maps) != 0:
+#     print("Found")
+#     pd.DataFrame(maps[0]).to_csv("Mazes/maze_99.csv")
+# else:
+#     print("Not found")
+
+
+
+class A:
+    def __init__(self):
+        print("init")
+
+    def __call__(self, *args, **kwargs):
+        print("call")
+
+
+a = A()
+print("initilized")
+a()
+
+
+A()()

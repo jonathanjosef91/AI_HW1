@@ -111,7 +111,6 @@ class BestFirstSearchRobot(Robot):
                     return GraphSearchSolution(next_node, solve_time=curr_time() - start_time,
                                                n_node_expanded=n_node_expanded, init_heuristic_time=init_heuristic_time)
             ############################################################################################################
-            # TODO (EX. 5.1): complete code here, delete exception
             n_node_expanded += 1
 
             for new_state, new_cost in maze_problem.expand_state(next_node.state):
