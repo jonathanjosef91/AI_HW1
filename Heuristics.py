@@ -20,6 +20,7 @@ class ShorterRobotHeuristic:
                                              f"{k} units because robot length has to at least 3"
         self.k = k
         ################################################################################################################
+        self.inf = maze_problem.maze_map.shape[0]*maze_problem.maze_map.shape[1]
         shorter_robot_head_goal, shorter_robot_tail_goal = self._compute_shorter_head_and_tails(maze_problem.initial_state.tail, maze_problem.initial_state.head)
         new_initial_head, new_initial_tail = self._compute_shorter_head_and_tails(maze_problem.tail_goal, maze_problem.head_goal)
         self.new_maze_problem = MazeProblem(maze_map=maze_problem.maze_map,
@@ -35,7 +36,7 @@ class ShorterRobotHeuristic:
 
     def _compute_shorter_head_and_tails(self, head, tail):
         direction = compute_robot_direction(head, tail)
-        step = direction*(self.k/2)
+        step = direction*(self.k//2)
 
         return head - step, tail + step
 
@@ -46,6 +47,4 @@ class ShorterRobotHeuristic:
             node = self.node_dists.get_node(new_state)
             return node.g_value
         else:
-            assert 0
-            return 0  # what should we return in this case, so that the heuristic would be as informative as possible
-                        # but still admissible
+            return self.inf

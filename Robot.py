@@ -123,9 +123,9 @@ class BestFirstSearchRobot(Robot):
                     continue
 
                 if new_state not in self.open:
-                    if maze_problem.is_goal(new_state):
-                        return GraphSearchSolution(final_node=new_node, solve_time=curr_time() - start_time,
-                                                   n_node_expanded=n_node_expanded)
+                    # if maze_problem.is_goal(new_state):
+                    #     return GraphSearchSolution(final_node=new_node, solve_time=curr_time() - start_time,
+                    #                                n_node_expanded=n_node_expanded)
                     self.open.add(new_node, self._calc_node_priority(new_node))
                 else:
                     old_node= self.open.get_node(new_state)
@@ -170,6 +170,6 @@ class WAStartRobot(BestFirstSearchRobot):
 
     def _calc_node_priority(self, node):
         g = node.g_value
-        h = self.heuristic(node.state, **self.h_params)
+        h = self.heuristic(node.state)
         f = self.w*h + (1-self.w)*g
         return f

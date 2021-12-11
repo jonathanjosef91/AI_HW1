@@ -13,8 +13,9 @@ def w_experiment(maze_index):
         ################################################################################################################
         # TODO (EX. 10.1): complete code here, delete exception
         robot_instance = WAStartRobot(center_manhattan_heuristic,w)
-        solve_times.append(robot_instance.solve(problem).solve_time)
-        solution_costs.append(robot_instance.solve(problem).cost)
+        sol = robot_instance.solve(problem)
+        solve_times.append(sol.solve_time)
+        solution_costs.append(sol.cost)
 
 
         ################################################################################################################
@@ -41,8 +42,10 @@ def shorter_robot_heuristic_experiment(maze_index):
     ks = list(range(2, length - 2, 2))
     for k in ks:
         ################################################################################################################
-        # TODO (EX. 16.3): complete code here, delete exception
-        raise NotImplemented
+        robot_instance = WAStartRobot(ShorterRobotHeuristic, k=k)
+        sol = robot_instance.solve(problem)
+        solve_times.append(sol.solve_time)
+        heuristic_init_times.append(sol.init_heuristic_time)
 
         ################################################################################################################
 
